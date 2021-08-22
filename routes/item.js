@@ -7,13 +7,6 @@ router.get('/', async (req, res) => {
     return res.status(200).json(data)
 })
 
-router.get('/add_item', async (req, res) => {
-    const data = await Item.find()
-    const item_id = data.length + 1
-
-    return res.render('register_item', {item_id})
-})
-
 router.post('/add_item', async (req, res) => {
     const data = await Item.find()
     const item_id = data.length + 1

@@ -1,23 +1,23 @@
 const router = require('express').Router()
 const User = require('../models/User')
 
-router.get('/', async(req,res) => {
+router.get('/', async (req, res) => {
     const data = await User.find()
 
     return res.status(200).json(data)
 })
 
-router.get('/edit/:card_uid', async(req,res) => {
-    const data = await User.findOne({card_uid: req.params.card_uid})
+router.get('/edit/:card_uid', async (req, res) => {
+    const data = await User.findOne({ card_uid: req.params.card_uid })
 
-    if(!data){
-        return res.status(404).json({message: "User not Found!"})
-    }else {
-        return res.render('edit_card')
+    if (!data) {
+        return res.status(404).json({ message: "User not Found!" })
+    } else {
+        return res.status(200).json(data)
     }
 })
 
-router.post('/edit/:card_uid', async(req, res) => {
+router.post('/edit/:card_uid', async (req, res) => {
     const [user_name, full_name, email, phone_number, coins, diamond] = req.body
 
     await User.findOneAndModify({
@@ -30,9 +30,9 @@ router.post('/edit/:card_uid', async(req, res) => {
         phone_number: phone_number,
         coins: coins,
         diamond: diamond
-    }).then(async() => {
-    const data = await User.findOne({card_uid: req.params.card_uid})
-    return res.status(200).json(data)
+    }).then(async () => {
+        const data = await User.findOne({ card_uid: req.params.card_uid })
+        return res.status(200).json(data)
     }).catch(e => {
         console.error(e)
     })

@@ -35,14 +35,12 @@ app.use('/items', item_route)   // API EndPoint /items
 ---------------------------------------> RFID Card <--------------------------------------------------
 
 GET http://localhost/card --> Cek kartu yang sedang aktif (yang sudah di-set di '/card/set_card_uid')
-GET http://localhost/card/register_card --> Dibuka di Browser, isi form untuk me-registrasi kartu
 POST http://localhost/card/set_card_uid --> Set kartu yang mau diregistrasi
 POST http://localhost/card/register_card --> Proses memasukkan data dari form registrasi ke database
 
 ---------------------------------------> Shop Items <-------------------------------------------------
 
 GET http://localhost/items --> Cek semua item yang terdaftar di Database
-GET http://localhost/items/add_item --> Dibuka di Browser, isi form untuk menambahkan item baru ke Database
 POST http://localhost/items/add_item --> Proses memasukkan data dari form registrasi ke database
 
 ----------------------------------------> User List <-------------------------------------------------

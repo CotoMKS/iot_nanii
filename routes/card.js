@@ -17,33 +17,6 @@ router.get('/', async (req, res) => {
     }
 })
 
-router.get('/register_card', async (req, res) => {
-    const checkData = await User.findOne({ card_uid: CardUID })
-
-    let form_data = {
-        card_uid: CardUID,
-        user_name: "",
-        full_name: "",
-        email: "",
-        phone_number: "",
-        coins: 0,
-        diamond: 0
-    }
-
-    if (checkData) {
-        form_data = {
-            card_uid: CardUID,
-            user_name: checkData.user_name,
-            full_name: checkData.full_name,
-            email: checkData.email,
-            phone_number: checkData.phone_number,
-            coins: checkData.coins,
-            diamond: checkData.diamond
-        }
-    }
-    res.render('register_card', { form_data })
-})
-
 router.post('/register_card', async (req, res) => {
     await User.findOneAndUpdate({
         card_uid: CardUID
