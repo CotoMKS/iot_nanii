@@ -13,6 +13,10 @@ const User = new Schema({
     type: String,
     require: true
   },
+  password: {
+    type: String,
+    require: true
+  },
   email: {
     type: String,
     require: true
@@ -28,6 +32,9 @@ const User = new Schema({
   diamond: {
     type: Number,
     default: 0
+  },
+  token: {
+    type: String,
   }
 })
 

@@ -8,6 +8,7 @@ const mongoose = require('mongoose')
 const item_route = require('./routes/item')
 const user_route = require('./routes/user')
 const card_route = require('./routes/card')
+const auth_route = require('./routes/auth')
 
 // Database Connection
 mongoose.connect(process.env.MONGO_URI, {
@@ -23,12 +24,12 @@ const http = require('http').createServer(app)
 
 // ExpressJS Config
 app.use(bodyParser.urlencoded({ extended: true }))
-app.set('view engine', 'ejs')
 app.set('json spaces', 2)
 
 app.use('/card', card_route)    // API EndPoint /card
 app.use('/users', user_route)   // API EndPoint /users
 app.use('/items', item_route)   // API EndPoint /items
+app.use('/auth', auth_route)   // API EndPoint /auth
 
 /*
 

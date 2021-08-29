@@ -18,7 +18,7 @@ router.get('/edit/:card_uid', async (req, res) => {
 })
 
 router.post('/edit/:card_uid', async (req, res) => {
-    const [user_name, full_name, email, phone_number, coins, diamond] = req.body
+    const [user_name, password, full_name, email, phone_number, coins, diamond, token] = req.body
 
     await User.findOneAndModify({
         card_uid: req.params.card_uid
@@ -27,9 +27,11 @@ router.post('/edit/:card_uid', async (req, res) => {
         user_name: user_name,
         full_name: full_name,
         email: email,
+        password: password,
         phone_number: phone_number,
         coins: coins,
-        diamond: diamond
+        diamond: diamond,
+        token: token
     }).then(async () => {
         const data = await User.findOne({ card_uid: req.params.card_uid })
         return res.status(200).json(data)
