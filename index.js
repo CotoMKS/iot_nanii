@@ -3,6 +3,7 @@ require('dotenv').config()
 const bodyParser = require('body-parser')
 const app = express()
 const mongoose = require('mongoose')
+const cors = require('cors')
 
 // Routes
 const item_route = require('./routes/item')
@@ -23,6 +24,7 @@ mongoose.connect(process.env.MONGO_URI, {
 const http = require('http').createServer(app)
 
 // ExpressJS Config
+app.use(cors())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.set('json spaces', 2)
 

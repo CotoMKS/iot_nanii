@@ -34,9 +34,17 @@ Content-Type: application/x-www-form-urlencoded
 
 user_name=Nanokaaa
 &full_name=Khaidir Muktamar
-&email=nanokaaa@wancommunity.org
+&email=nanokaaa@wancommunity.org 
 &password=kannayama
 &phone_number=087777777777
 &card_uid=549B2822
 
 ###
+
+POST http://localhost/auth/login
+Content-Type: application/json
+
+{
+    "email": "cn1250425@gmail.com",
+    "password": "Chandra1250425"
+}
